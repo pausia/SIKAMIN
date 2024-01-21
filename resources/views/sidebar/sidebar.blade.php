@@ -55,18 +55,36 @@
                 </li>
                 @endif
 
-                <li class="submenu {{set_active(['student/list','student/grid','student/add/page'])}} {{ (request()->is('student/edit/*')) ? 'active' : '' }} {{ (request()->is('student/profile/*')) ? 'active' : '' }}">
-                    <a href="#"><i class="fas fa-graduation-cap"></i>
-                        <span> Students</span>
-                        <span class="menu-arrow"></span>
-                    </a>
-                    <ul>
-                        <li><a href="{{ route('student/list') }}"  class="{{set_active(['student/list','student/grid'])}}">Student List</a></li>
-                        <li><a href="{{ route('student/add/page') }}" class="{{set_active(['student/add/page'])}}">Student Add</a></li>
-                        <li><a class="{{ (request()->is('student/edit/*')) ? 'active' : '' }}">Student Edit</a></li>
-                        <li><a href=""  class="{{ (request()->is('student/profile/*')) ? 'active' : '' }}">Student View</a></li>
-                    </ul>
-                </li>
+                {{-- Khusus Staff -------------------------------------------------------------------------------------------------------}}
+                @if(Auth::check())
+                    @if(Auth::user()->role_name == 'Staff')
+                        <li class="submenu {{set_active(['staff/mahasiswalist/page','student/grid','student/add/page'])}} {{ (request()->is('student/edit/*')) ? 'active' : '' }} {{ (request()->is('student/profile/*')) ? 'active' : '' }}">
+                            <a href="#"><i class="fas fa-graduation-cap"></i>
+                                <span> Mahasiswa</span>
+                                <span class="menu-arrow"></span>
+                            </a>
+                            <ul>
+                                <li><a href="{{ route('staff/mahasiswalist/page') }}"  class="{{set_active(['student/list','student/grid'])}}">Mahasiswa List</a></li>
+                                <li><a href="{{ route('staff/aturjadwal/page') }}"  class="{{set_active(['student/list','student/grid'])}}">Atur Jadwal Sidang</a></li>
+                            </ul>
+                        </li>
+                    @else
+                        <li class="submenu {{set_active(['student/list','student/grid','student/add/page'])}} {{ (request()->is('student/edit/*')) ? 'active' : '' }} {{ (request()->is('student/profile/*')) ? 'active' : '' }}">
+                            <a href="#"><i class="fas fa-graduation-cap"></i>
+                                <span> Students</span>
+                                <span class="menu-arrow"></span>
+                            </a>
+                            <ul>
+                                <li><a href="{{ route('student/list') }}"  class="{{set_active(['student/list','student/grid'])}}">Student List</a></li>
+                                <li><a href="{{ route('student/add/page') }}" class="{{set_active(['student/add/page'])}}">Student Add</a></li>
+                                <li><a class="{{ (request()->is('student/edit/*')) ? 'active' : '' }}">Student Edit</a></li>
+                                <li><a href=""  class="{{ (request()->is('student/profile/*')) ? 'active' : '' }}">Student View</a></li>
+                            </ul>
+                        </li>
+                    @endif
+                @endif
+
+                {{-- END Khusus Staff -----------------------------------------------------------------------------------------------------}}
 
                 <li class="submenu  {{set_active(['teacher/add/page','teacher/list/page','teacher/grid/page','teacher/edit'])}} {{ (request()->is('teacher/edit/*')) ? 'active' : '' }}">
                     <a href="#"><i class="fas fa-chalkboard-teacher"></i>

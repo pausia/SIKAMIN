@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\DosenController;
 use App\Http\Controllers\JadwalSidangController;
+use App\Http\Controllers\StaffController;
 use App\Models\JadwalSidang;
 use Illuminate\Support\Facades\Route;
 
@@ -127,6 +128,15 @@ Route::group(['namespace' => 'App\Http\Controllers'],function()
         Route::get('dosen/edit/{user_id}', 'editRecord'); // view dosen record
         Route::post('dosen/update', 'updateRecorddosen')->middleware('auth')->name('dosen/update'); // update record
         Route::post('dosen/delete', 'dosenDelete')->name('dosen/delete'); // delete record dosen
+    });
+
+    // ------------------------ Staff -------------------------------//
+    Route::controller(StaffController::class)->group(function () {
+        Route::get('staff/mahasiswalist/page', 'staffMahasiswaList')->middleware('auth')->name('staff/mahasiswalist/page'); // page staff vieww all mahasiswa
+        Route::get('staff/aturjadwal/page', 'staffAturJadwal')->middleware('auth')->name('staff/aturjadwal/page');
+        Route::get('staffeditmahasiswa/edit/{id}', 'staffMahasiswaEdit'); // view for edit
+        Route::post('staffupdatemahasiswa/update', 'staffMahasiswaUpdate')->name('staffupdatemahasiswa/update'); // update record student
+
     });
 
     // ------------------------ teacher -------------------------------//

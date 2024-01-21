@@ -1,8 +1,7 @@
 <?php
-
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -55,7 +54,8 @@ class User extends Authenticatable
     protected static function boot()
     {
         parent::boot();
-        self::creating(function ($model) {
+
+        static::creating(function ($model) {
             $getUser = self::orderBy('user_id', 'desc')->first();
 
             if ($getUser) {
@@ -70,5 +70,30 @@ class User extends Authenticatable
                 $model->user_id = '000' . sprintf("%03s", $nextID);
             }
         });
+
+        static::created(function ($user) {
+            if ($user->role_name === 'Student') {
+                $user->mahasiswa()->create([
+                    'name_full' => $user->name,
+                    // Tambahkan kolom mahasiswa lainnya di sini
+                ]);
+            } elseif ($user->role_name === 'Dosen') {
+                $user->dosen()->create([
+                    'name_full' => $user->name,
+                    // Tambahkan kolom dosen lainnya di sini
+                ]);
+            }
+        });
+    }
+
+    public function mahasiswa()
+    {
+        return $this->hasOne(Mahasiswa::class, 'user_id');
+    }
+
+    public function dosen()
+    {
+        return $this->hasOne(Dosen::class, 'user_id');
     }
 }
+

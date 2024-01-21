@@ -9,7 +9,16 @@ class Dosen extends Model
 {
     use HasFactory;
     protected $table = 'dosen';
-    protected $fillable = ['user_id', 'sidang_diikuti_hari_ini'];
+    protected $fillable = [
+        'user_id',
+        'name_full',
+        'nim',
+        'dosen_pembimbing_1_id',
+        'dosen_pembimbing_2_id',
+        'mobile_phone',
+        'address',
+        'birthdate',
+    ];
 
     public function jadwalPembimbing()
     {

@@ -22,11 +22,6 @@ class UserCreatedListener
      */
     public function handle(UserCreated $event)
     {
-        if ($event->user->role_name === 'Student') {
-            Mahasiswa::create([
-                'user_id' => $event->user->id,
-                // Tambahkan kolom-kolom lain sesuai kebutuhan
-            ]);
-        }
+        //
     }
 }

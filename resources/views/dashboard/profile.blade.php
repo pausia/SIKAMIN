@@ -49,7 +49,7 @@
 
                     <div class="tab-pane fade show active" id="per_details_tab">
                         <div class="row">
-                            <div class="col-lg-9">
+                            <div class="col-lg-12">
                                 <div class="card">
                                     <div class="card-body">
                                         <h5 class="card-title d-flex justify-content-between">
@@ -63,54 +63,11 @@
                                             <p class="col-sm-9">{{ Session::get('name') }}</p>
                                         </div>
                                         <div class="row">
-                                            <p class="col-sm-3 text-muted text-sm-end mb-0 mb-sm-3">Date of Birth</p>
-                                            <p class="col-sm-9">24 Jul 1983</p>
-                                        </div>
-                                        <div class="row">
                                             <p class="col-sm-3 text-muted text-sm-end mb-0 mb-sm-3">Email</p>
                                             <p class="col-sm-9"><a href="/cdn-cgi/l/email-protection"
                                                     class="__cf_email__"
                                                     data-cfemail="a1cbcec9cfc5cec4e1c4d9c0ccd1cdc48fc2cecc">{{ Session::get('email') }}</a>
                                             </p>
-                                        </div>
-                                        <div class="row">
-                                            <p class="col-sm-3 text-muted text-sm-end mb-0 mb-sm-3">Mobile</p>
-                                            <p class="col-sm-9">{{ Session::get('phone_number') }}</p>
-                                        </div>
-                                        <div class="row">
-                                            <p class="col-sm-3 text-muted text-sm-end mb-0">Address</p>
-                                            <p class="col-sm-9 mb-0">Phnome Phenh</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3">
-
-                                <div class="card">
-                                    <div class="card-body">
-                                        <h5 class="card-title d-flex justify-content-between">
-                                            <span>Account Status</span>
-                                            <a class="edit-link" href="#"><i class="far fa-edit me-1"></i>Edit</a>
-                                        </h5>
-                                        <button class="btn btn-success" type="button"><i class="fe fe-check-verified"></i> {{ Session::get('status') }}</button>
-                                    </div>
-                                </div>
-
-                                <div class="card">
-                                    <div class="card-body">
-                                        <h5 class="card-title d-flex justify-content-between">
-                                            <span>Skills </span>
-                                            <a class="edit-link" href="#"><i class="far fa-edit me-1"></i>Edit</a>
-                                        </h5>
-                                        <div class="skill-tags">
-                                            <span>Html5</span>
-                                            <span>CSS3</span>
-                                            <span>WordPress</span>
-                                            <span>Javascript</span>
-                                            <span>Android</span>
-                                            <span>iOS</span>
-                                            <span>Angular</span>
-                                            <span>PHP</span>
                                         </div>
                                     </div>
                                 </div>
