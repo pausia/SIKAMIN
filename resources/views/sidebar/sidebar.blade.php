@@ -146,20 +146,17 @@
                     <span>Management</span>
                 </li>
 
-                <li class="submenu {{set_active(['account/fees/collections/page'])}}">
-                    <a href="#"><i class="fas fa-file-invoice-dollar"></i>
-                        <span> Accounts</span>
-                        <span class="menu-arrow"></span>
-                    </a>
-                    <ul>
-                        <li><a class="{{set_active(['account/fees/collections/page'])}}" href="{{ route('account/fees/collections/page') }}">Fees Collection</a></li>
-                        <li><a href="expenses.html">Expenses</a></li>
-                        <li><a href="salary.html">Salary</a></li>
-                        <li><a href="add-fees-collection.html">Add Fees</a></li>
-                        <li><a href="add-expenses.html">Add Expenses</a></li>
-                        <li><a href="add-salary.html">Add Salary</a></li>
-                    </ul>
-                </li>
+                @if(Auth::check())
+                    @if(Auth::user()->role_name == 'Dosen')
+                        <li class="{{set_active(['dosen/jadwalsidangmahasiswa'])}}">
+                            <a href="{{ route('dosen/jadwalsidangmahasiswa') }}"><i class="fas fa-file-invoice-dollar"></i> <span>Account Dosen</span></a>
+                        </li>
+                    @elseif(Auth::user()->role_name == 'Student')
+                        <li class="{{set_active(['accountprofilemahasiswa/page'])}}">
+                            <a href="{{ route('accountprofilemahasiswa/page') }}"><i class="fas fa-file-invoice-dollar"></i> <span>Account Mahasiswa</span></a>
+                        </li>
+                    @endif
+                @endif
                 <li>
                     <a href="holiday.html"><i class="fas fa-holly-berry"></i> <span>Holiday</span></a>
                 </li>

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\DosenController;
 use App\Http\Controllers\JadwalSidangController;
+use App\Http\Controllers\MahasiswaController;
 use App\Http\Controllers\StaffController;
 use App\Models\JadwalSidang;
 use Illuminate\Support\Facades\Route;
@@ -119,6 +120,10 @@ Route::group(['namespace' => 'App\Http\Controllers'],function()
         Route::get('dosen/jadwalsidangmahasiswa', 'jadwalSidangMahasiswa')->middleware('auth')->name('dosen/jadwalsidangmahasiswa'); // jadwalsidang proposal Mahasiswa
     });
 
+    // ------------------------ Mahasiswa -------------------------------//
+    Route::controller(MahasiswaController::class)->group(function () {
+        Route::get('accountprofilemahasiswa/page', 'accountProfileMahasiswa')->middleware('auth')->name('accountprofilemahasiswa/page'); // list student
+    });
     // ------------------------ Dosen -------------------------------//
     Route::controller(DosenController::class)->group(function () {
         Route::get('dosen/add/page', 'dosenAdd')->middleware('auth')->name('dosen/add/page'); // page dosen

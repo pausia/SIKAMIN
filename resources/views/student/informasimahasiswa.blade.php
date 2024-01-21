@@ -9,10 +9,10 @@
                 <div class="row align-items-center">
                     <div class="col-sm-12">
                         <div class="page-sub-header">
-                            <h3 class="page-title">Tambah Jadwal Sidang</h3>
+                            <h3 class="page-title">Kelengkapan Informasi Mahasiswa</h3>
                             <ul class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="{{ route('student/add/page') }}">Mahasiswa</a></li>
-                                <li class="breadcrumb-item active">Tambah Jadwal Sidang</li>
+                                <li class="breadcrumb-item active">Kelengkapan Informasi Mahasiswa</li>
                             </ul>
                         </div>
                     </div>
@@ -36,9 +36,9 @@
                                     </div>
                                     <div class="col-12 col-sm-4">
                                         <div class="form-group local-forms">
-                                            <label>Judul Skripsi <span class="login-danger">*</span></label>
-                                            <input type="text" class="form-control @error('judul_skripsi') is-invalid @enderror" name="judul_skripsi" placeholder="Masukan judul" value="{{ old('judul_skripsi') }}">
-                                            @error('judul_skripsi')
+                                            <label>Nama Lengkap <span class="login-danger">*</span></label>
+                                            <input type="text" class="form-control @error('name_full') is-invalid @enderror" name="name_full" placeholder="Masukan Nama Lengkap" value="{{ old('name_full') }}">
+                                            @error('name_full')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
                                                 </span>
@@ -47,9 +47,9 @@
                                     </div>
                                     <div class="col-12 col-sm-4">
                                         <div class="form-group local-forms">
-                                            <label>Deskripsi Sidang <span class="login-danger">*</span></label>
-                                            <input type="text" class="form-control @error('deskripsi') is-invalid @enderror" name="deskripsi" placeholder="Masukan deskripsi sidang" value="{{ old('deskripsi') }}">
-                                            @error('deskripsi')
+                                            <label>Nim <span class="login-danger">*</span></label>
+                                            <input type="text" class="form-control @error('nim') is-invalid @enderror" name="nim" placeholder="Masukan Nim" value="{{ old('nim') }}">
+                                            @error('nim')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
                                                 </span>
@@ -58,49 +58,39 @@
                                     </div>
                                     <div class="col-12 col-sm-4">
                                         <div class="form-group local-forms">
-                                            <label>Jenis Sidang <span class="login-danger">*</span></label>
-                                            <select class="form-control select  @error('jenis_sidang') is-invalid @enderror" name="jenis_sidang">
-                                                <option selected disabled>Select Jenis Sidang</option>
-                                                <option value="proposal" {{ old('jenis_sidang') == 'proposal' ? "selected" :"proposal"}}>Proposal</option>
-                                                <option value="hasil" {{ old('jenis_sidang') == 'hasil' ? "selected" :""}}>Hasil</option>
-                                                <option value="skripsi" {{ old('jenis_sidang') == 'skripsi' ? "selected" :""}}>Skripsi</option>
-                                            </select>
-                                            @error('jenis_sidang')
+                                            <label>Mobile Phone <span class="login-danger">*</span></label>
+                                            <input type="text" class="form-control @error('mobile_phone') is-invalid @enderror" name="mobile_phone" placeholder="Masukan Mobile Phone" value="{{ old('mobile_phone') }}">
+                                            @error('mobile_phone')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
                                                 </span>
                                             @enderror
                                         </div>
                                     </div>
-                                    {{-- <div class="col-12 col-sm-4">
+                                    <div class="col-12 col-sm-4">
+                                        <div class="form-group local-forms">
+                                            <label>Alamat <span class="login-danger">*</span></label>
+                                            <input type="text" class="form-control @error('address') is-invalid @enderror" name="address" placeholder="Masukan Alamat" value="{{ old('address') }}">
+                                            @error('address')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-sm-4">
                                         <div class="form-group local-forms calendar-icon">
-                                            <label>Tanggal Sidang <span class="login-danger">*</span></label>
-                                            <input class="form-control datetimepicker @error('tanggal_sidang') is-invalid @enderror" name="tanggal_sidang" type="text" placeholder="DD-MM-YYYY" value="{{ old('tanggal_sidang') }}">
-                                            @error('tanggal_sidang')
+                                            <label>Tanggal Lahir <span class="login-danger">*</span></label>
+                                            <input class="form-control datetimepicker @error('birthdate') is-invalid @enderror" name="birthdate" type="text" placeholder="DD-MM-YYYY" value="{{ old('birthdate') }}">
+                                            @error('birthdate')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
                                                 </span>
                                             @enderror
                                         </div>
                                     </div>
-                                    <div class="col-12 col-sm-4">
-                                        <div class="form-group local-forms">
-                                            <label>Waktu Sidang <span class="login-danger">*</span></label>
-                                            <select class="form-control select  @error('waktu_sidang') is-invalid @enderror" name="waktu_sidang">
-                                                <option selected disabled>Select Waktu Sidang</option>
-                                                <option value="08:00-10:00" {{ old('waktu_sidang') == '08:00-10:00' ? "selected" :"08:00-10:00"}}>Pukul 08:00-10:00 WITA</option>
-                                                <option value="10:30-12:30" {{ old('waktu_sidang') == '10:30-12:30' ? "selected" :""}}>Pukul 10:30-12:30 WITA</option>
-                                                <option value="13:30-15:30" {{ old('waktu_sidang') == '13:30-15:30' ? "selected" :""}}>Pukul 13:30-15:30 WITA</option>
-                                            </select>
-                                            @error('waktu_sidang')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
-                                        </div>
-                                    </div> --}}
                                     <div class="col-12">
-                                        <h5 class="form-title student-info">Informasi Dosen Pembimbing dan Penguji
+                                        <h5 class="form-title student-info">Informasi Dosen Pembimbing I & II
                                             <span>
                                                 <a href="javascript:;"></a>
                                             </span>

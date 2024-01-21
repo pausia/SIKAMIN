@@ -92,7 +92,6 @@
                                                     </span>
                                                 @enderror
                                             </div>
-                                           
                                             <div class="form-group">
                                                 <label>New Password</label>
                                                 <input type="password" class="form-control @error('new_password') is-invalid @enderror" name="new_password" value="{{ old('new_password') }}">
