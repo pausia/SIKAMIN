@@ -137,7 +137,7 @@ Route::group(['namespace' => 'App\Http\Controllers'],function()
 
     // ------------------------ Staff -------------------------------//
     Route::controller(StaffController::class)->group(function () {
-        Route::get('staff/mahasiswalist/page', 'staffMahasiswaList')->middleware('auth')->name('staff/mahasiswalist/page'); // page staff vieww all mahasiswa
+        Route::get('staff/mahasiswa', 'staffMahasiswaList')->middleware('auth')->name('staff/mahasiswa'); // page staff vieww all mahasiswa
         Route::get('staff/aturjadwal/page', 'staffAturJadwal')->middleware('auth')->name('staff/aturjadwal/page');
         Route::get('staffeditmahasiswa/edit/{id}', 'staffMahasiswaEdit'); // view for edit
         Route::post('staffupdatemahasiswa/update', 'staffMahasiswaUpdate')->name('staffupdatemahasiswa/update'); // update record student
