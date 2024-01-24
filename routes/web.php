@@ -1,11 +1,24 @@
 <?php
 
-use App\Http\Controllers\DosenController;
-use App\Http\Controllers\JadwalSidangController;
-use App\Http\Controllers\MahasiswaController;
-use App\Http\Controllers\StaffController;
 use App\Models\JadwalSidang;
+use App\Http\Controllers\Setting;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Request;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\DosenController;
+use App\Http\Controllers\StaffController;
+use App\Http\Controllers\InvoiceController;
+use App\Http\Controllers\StudentController;
+use App\Http\Controllers\SubjectController;
+use App\Http\Controllers\TeacherController;
+use App\Http\Controllers\AccountsController;
+use App\Http\Controllers\MahasiswaController;
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\DepartmentController;
+use App\Http\Controllers\JadwalSidangController;
+use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\UserManagementController;
 
 /*
 |--------------------------------------------------------------------------
@@ -137,7 +150,7 @@ Route::group(['namespace' => 'App\Http\Controllers'],function()
 
     // ------------------------ Staff -------------------------------//
     Route::controller(StaffController::class)->group(function () {
-        Route::get('staff/mahasiswalist/page', 'staffMahasiswaList')->middleware('auth')->name('staff/mahasiswalist/page'); // page staff vieww all mahasiswa
+        Route::get('staff/mahasiswa', 'staffMahasiswaList')->middleware('auth')->name('staff/mahasiswa'); // page staff vieww all mahasiswa
         Route::get('staff/aturjadwal/page', 'staffAturJadwal')->middleware('auth')->name('staff/aturjadwal/page');
         Route::get('staffeditmahasiswa/edit/{id}', 'staffMahasiswaEdit'); // view for edit
         Route::post('staffupdatemahasiswa/update', 'staffMahasiswaUpdate')->name('staffupdatemahasiswa/update'); // update record student
