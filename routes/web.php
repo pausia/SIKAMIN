@@ -126,13 +126,8 @@ Route::group(['namespace' => 'App\Http\Controllers'],function()
     });
     // ------------------------ Dosen -------------------------------//
     Route::controller(DosenController::class)->group(function () {
-        Route::get('dosen/add/page', 'dosenAdd')->middleware('auth')->name('dosen/add/page'); // page dosen
-        Route::get('dosen/list/page', 'dosenList')->middleware('auth')->name('dosen/list/page'); // page dosen
-        Route::get('dosen/grid/page', 'dosenGrid')->middleware('auth')->name('dosen/grid/page'); // page grid dosen
-        Route::post('dosen/save', 'saveRecord')->middleware('auth')->name('dosen/save'); // save record
-        Route::get('dosen/edit/{user_id}', 'editRecord'); // view dosen record
-        Route::post('dosen/update', 'updateRecorddosen')->middleware('auth')->name('dosen/update'); // update record
-        Route::post('dosen/delete', 'dosenDelete')->name('dosen/delete'); // delete record dosen
+        Route::get('dosen/mahasiswabimbingan/list/page', 'dosenMahasiwaBimbinganList')->middleware('auth')->name('dosen/mahasiswabimbingan/list/page'); // page dosen
+        Route::get('dosen/mahasiswabimbingan/grid/page', 'dosenMahasiwaBimbinganGrid')->middleware('auth')->name('dosen/mahasiswabimbingan/grid/page'); // page dosen
     });
 
     // ------------------------ Staff -------------------------------//

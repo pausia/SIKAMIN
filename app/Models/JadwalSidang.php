@@ -10,6 +10,9 @@ class JadwalSidang extends Model
 {
     use HasFactory;
     protected $table = 'jadwal_sidang';
+    protected $dispatchesEvents = [
+        'created' => 'App\Events\JadwalSidangCreated',
+    ];
     protected $fillable = [
         'user_id',
         'dosen_pembimbing_1_id',
@@ -29,8 +32,8 @@ class JadwalSidang extends Model
 
     public function mahasiswa()
     {
-        return $this->belongsTo(Mahasiswa::class, 'mahasiswa_id');
-    }
+        return $this->belongsTo(Mahasiswa::class, 'user_id', 'user_id');
+    }    
 
     public function pembimbing1()
     {

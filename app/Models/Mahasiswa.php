@@ -14,11 +14,19 @@ class Mahasiswa extends Model
         'user_id',
         'name_full',
         'nim',
+        'sidang_terakhir',
         'dosen_pembimbing_1_id',
         'dosen_pembimbing_2_id',
         'mobile_phone',
         'address',
     ];
+
+    public function getDefaults()
+    {
+        return [
+            'progress_sidang' => '0/3',
+        ];
+    }
 
     public function user()
     {
@@ -37,6 +45,15 @@ class Mahasiswa extends Model
 
     public function jadwalSidang()
     {
-        return $this->hasMany(JadwalSidang::class, 'mahasiswa_id');
+        return $this->hasOne(JadwalSidang::class, 'user_id', 'user_id');
+    }
+    
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::creating(function ($model) {
+            $model->fill($model->getDefaults());
+        });
     }
 }
