@@ -11,35 +11,36 @@
                         <span>Settings</span>
                     </a>
                 </li> --}}
-                {{-- <li
-                    class="submenu {{set_active(['home','teacher/dashboard','student/dashboard','superadmin/dashboard','staff/dashboard'])}}">
-                    <a>
+                <li class="submenu {{ set_active(['home', 'student/dashboard']) }}">
+                    <a href="{{ route('student/dashboard') }}" class="{{ set_active(['student/dashboard']) }}">
                         <i class="fas fa-tachometer-alt"></i>
                         <span> Dashboard</span>
-                        <span class="menu-arrow"></span>
+                        {{-- <span class="menu-arrow"></span> --}}
                     </a>
-                    <ul>
-                        @if(Auth::check())
-                        @if(Auth::user()->role_name == 'Dosen')
-                        <li><a href="{{ route('teacher/dashboard') }}"
-                                class="{{ set_active(['teacher/dashboard']) }}">Teacher Dashboard</a></li>
-                        @elseif(Auth::user()->role_name == 'Student')
-                        <li><a href="{{ route('student/dashboard') }}"
-                                class="{{ set_active(['student/dashboard']) }}">Student Dashboard</a></li>
-                        @elseif(Auth::user()->role_name == 'Super Admin')
-                        <li><a href="{{ route('superadmin/dashboard') }}"
-                                class="{{ set_active(['superadmin/dashboard']) }}">Super Admin Dashboard</a></li>
-                        @elseif(Auth::user()->role_name == 'Staff')
-                        <li><a href="{{ route('staff/dashboard') }}" class="{{ set_active(['staff/dashboard']) }}">Staff
-                                Dashboard</a></li>
+                    {{-- <ul>
+                        @if (Auth::check())
+                            @if (Auth::user()->role_name == 'Dosen')
+                                <li><a href="{{ route('teacher/dashboard') }}"
+                                        class="{{ set_active(['teacher/dashboard']) }}">Teacher Dashboard</a></li>
+                            @elseif(Auth::user()->role_name == 'Student')
+                                <li><a href="{{ route('student/dashboard') }}"
+                                        class="{{ set_active(['student/dashboard']) }}">Student Dashboard</a></li>
+                            @elseif(Auth::user()->role_name == 'Super Admin')
+                                <li><a href="{{ route('superadmin/dashboard') }}"
+                                        class="{{ set_active(['superadmin/dashboard']) }}">Super Admin Dashboard</a>
+                                </li>
+                            @elseif(Auth::user()->role_name == 'Staff')
+                                <li><a href="{{ route('staff/dashboard') }}"
+                                        class="{{ set_active(['staff/dashboard']) }}">Staff
+                                        Dashboard</a></li>
+                            @endif
                         @endif
-                        @endif
-                    </ul>
-                </li> --}}
+                    </ul> --}}
+                </li>
 
                 {{-- START-ROLE: DOSEN --}}
-                {{-- @if(Auth::check())
-                @if(Auth::user()->role_name == 'Dosen')
+                {{-- @if (Auth::check())
+                @if (Auth::user()->role_name == 'Dosen')
                 <li class="{{set_active(['dosen/jadwalsidangmahasiswa'])}}">
                     <a href="{{ route('dosen/jadwalsidangmahasiswa') }}"><i class="fas fa-calendar-day"></i>
                         <span>Jadwal Sidang</span></a>
@@ -68,48 +69,48 @@
                 @endif --}}
                 {{-- END-ROLE: DOSEN --}}
 
-                @if(Auth::check())
-                    {{--START: MENU STAFF --}}
-                    @if(Auth::user()->role_name == 'Staff')
-                    <li class="{{set_active(['staff/dashboard'])}}">
-                        <a href="{{ route('staff/dashboard') }}">
-                            <i class="fas fa-tachometer-alt"></i>
-                            <span>Dashboard</span>
-                        </a>
-                    </li>
-                    <li class="{{set_active(['staff/mahasiswa'])}}">
-                        <a href="{{ route('staff/mahasiswa') }}">
-                            <i class="fas fa-graduation-cap"></i>
-                            <span>Mahasiswa</span>
-                        </a>
-                    </li>
-                    {{--END: MENU STAFF --}}
+                @if (Auth::check())
+                    {{-- START: MENU STAFF --}}
+                    @if (Auth::user()->role_name == 'Staff')
+                        <li class="{{ set_active(['staff/dashboard']) }}">
+                            <a href="{{ route('staff/dashboard') }}">
+                                <i class="fas fa-tachometer-alt"></i>
+                                <span>Dashboard</span>
+                            </a>
+                        </li>
+                        <li class="{{ set_active(['staff/mahasiswa']) }}">
+                            <a href="{{ route('staff/mahasiswa') }}">
+                                <i class="fas fa-graduation-cap"></i>
+                                <span>Mahasiswa</span>
+                            </a>
+                        </li>
+                        {{-- END: MENU STAFF --}}
 
-                    {{--START: MENU MAHASISWA --}}
+                        {{-- START: MENU MAHASISWA --}}
                     @elseif(Auth::user()->role_name == 'Mahasiswa')
-                    <li class="{{set_active(['staff/dashboard'])}}">
-                        <a href="{{ route('staff/dashboard') }}">
-                            <i class="fas fa-tachometer-alt"></i>
-                            <span>Dashboard</span>
-                        </a>
-                    </li>
-                    <li class="{{set_active(['staff/mahasiswa'])}}">
-                        <a href="{{ route('staff/mahasiswa') }}">
-                            <i class="fas fa-graduation-cap"></i>
-                            <span>Mahasiswa</span>
-                        </a>
-                    </li>
-                    {{--END: MENU MAHASISWA --}}
+                        <li class="{{ set_active(['staff/dashboard']) }}">
+                            <a href="{{ route('staff/dashboard') }}">
+                                <i class="fas fa-tachometer-alt"></i>
+                                <span>Dashboard</span>
+                            </a>
+                        </li>
+                        <li class="{{ set_active(['staff/mahasiswa']) }}">
+                            <a href="{{ route('staff/mahasiswa') }}">
+                                <i class="fas fa-graduation-cap"></i>
+                                <span>Mahasiswa</span>
+                            </a>
+                        </li>
+                        {{-- END: MENU MAHASISWA --}}
 
-                    {{--START: MENU DOSEN --}}
+                        {{-- START: MENU DOSEN --}}
                     @elseif(Auth::user()->role_name == 'Dosen')
-                    <li class="{{set_active(['dosen/jadwalsidangmahasiswa'])}}">
-                        <a href="{{ route('dosen/jadwalsidangmahasiswa') }}"><i class="fas fa-calendar-day"></i>
-                            <span>Jadwal
-                                Sidang</span></a>
-                    </li>
+                        <li class="{{ set_active(['dosen/jadwalsidangmahasiswa']) }}">
+                            <a href="{{ route('dosen/jadwalsidangmahasiswa') }}"><i class="fas fa-calendar-day"></i>
+                                <span>Jadwal
+                                    Sidang</span></a>
+                        </li>
                     @endif
-                    {{--END: MENU DOSEN --}}
+                    {{-- END: MENU DOSEN --}}
                 @endif
 
 
@@ -185,18 +186,20 @@
                     </ul>
                 </li> --}}
 
-                @if(Auth::check())
-                @if(Auth::user()->role_name == 'Dosen')
-                <li class="{{set_active(['dosen/jadwalsidangmahasiswa'])}}">
-                    <a href="{{ route('dosen/jadwalsidangmahasiswa') }}"><i class="fas fa-file-invoice-dollar"></i>
-                        <span>Account Dosen</span></a>
-                </li>
-                @elseif(Auth::user()->role_name == 'Student')
-                <li class="{{set_active(['accountprofilemahasiswa/page'])}}">
-                    <a href="{{ route('accountprofilemahasiswa/page') }}"><i class="fas fa-file-invoice-dollar"></i>
-                        <span>Account Mahasiswa</span></a>
-                </li>
-                @endif
+                @if (Auth::check())
+                    @if (Auth::user()->role_name == 'Dosen')
+                        <li class="{{ set_active(['dosen/jadwalsidangmahasiswa']) }}">
+                            <a href="{{ route('dosen/jadwalsidangmahasiswa') }}"><i
+                                    class="fas fa-file-invoice-dollar"></i>
+                                <span>Account Dosen</span></a>
+                        </li>
+                    @elseif(Auth::user()->role_name == 'Student')
+                        <li class="{{ set_active(['accountprofilemahasiswa/page']) }}">
+                            <a href="{{ route('accountprofilemahasiswa/page') }}"><i
+                                    class="fas fa-file-invoice-dollar"></i>
+                                <span>Account Mahasiswa</span></a>
+                        </li>
+                    @endif
                 @endif
                 {{-- <li>
                     <a href="holiday.html"><i class="fas fa-holly-berry"></i> <span>Holiday</span></a>
